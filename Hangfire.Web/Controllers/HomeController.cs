@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Hangfire.Tasks;
 using System.Web.Mvc;
 
 namespace Hangfire.Web.Controllers
@@ -12,5 +9,18 @@ namespace Hangfire.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult RunTask()
+        {
+            HgTask.PerformSomeLongRunningTask(12);
+            return RedirectToAction("Index");
+        }
+        public ActionResult RunTaskWithHangfire()
+        {
+            BackgroundJob.Enqueue(() => HgTask.PerformSomeLongRunningTask(15));
+            return RedirectToAction("Index");
+        }
+
     }
+
 }
