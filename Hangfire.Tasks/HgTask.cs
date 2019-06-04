@@ -12,5 +12,12 @@ namespace Hangfire.Tasks
             Thread.Sleep(10000);
             Console.WriteLine("Completed Performing Long Running Tasks..");
         }
+
+        public static void PerformSomeRecurringTask()
+        {
+            Console.WriteLine("Started Performing Recurring Tasks..");
+            Thread.Sleep(10000);
+            Console.WriteLine("Completed Performing Recurring Tasks..");
+        }
     }
 }
