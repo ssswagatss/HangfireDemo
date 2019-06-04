@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Hangfire.Storage.RecurringJobDto>
+@{
+    ViewBag.Title = "Recurring Tasks";
+}
+<h2 class="text-info text-center">Recurring Task Demo</h2>
+<hr />
+@if (Model != null && Model.Any())
+{
+    <div class="alert alert-success">
+        <h4>List of Tasks</h4>
+        @foreach (var t in Model)
+        {
+            <p>Job ID : @t.Id</p>
+            <p>Cron : @t.Cron</p>
+            <p>Last execution time : @(t.LastExecution?.ToString())</p>
+            <p>Next execution time : @(t.NextExecution?.ToString())</p>
+            <p>Is Deleted : @(t.Removed ? "Yes" : "No")</p>
+        }
+
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <h4>No recurring Tasks</h4>
+    </div>
+}
+<div class="row text-info text-center">
+    <div class="col-md-12">
+        @*<form class="form-inline" action="~/RecurringJobs/Schedule">
+            <div class="form-group">
+                <label for="email">Schedule Recurring Task </label>
+                <input type="text" name="minutes" value="" placeholder="Time in minute(s)" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-default btn-success">Schedule</button>
+        </form>*@
+        <hr />
+        @*<form class="form-inline" action="~/RecurringJobs/Update">
+            <div class="form-group">
+                <label for="email">Update Recurring Task </label>
+                <input type="text" name="minutes" value="" placeholder="Time in minute(s)" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-default btn-info">Update</button>
+        </form>*@
+
+        <hr />
+        @*<form class="form-inline" action="~/RecurringJobs/TriggerNow">
+            <div class="form-group">
+                <label for="email">Trigger Recurring Task Now</label>
+            </div>
+            <button type="submit" class="btn btn-default btn-primary">Trigger</button>
+        </form>*@
+
+        <hr />
+        @*<form class="form-inline" action="~/RecurringJobs/Remove">
+            <div class="form-group">
+                <label for="email">Remove Recurring Task</label>
+            </div>
+            <button type="submit" class="btn btn-default btn-danger">Remove</button>
+        </form>*@
+    </div>
+</div>
