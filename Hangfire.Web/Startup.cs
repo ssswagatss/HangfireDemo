@@ -18,7 +18,7 @@ namespace Hangfire.Web
             GlobalConfiguration.Configuration
                                .UseSqlServerStorage("DemoHangfireDB");
                                //.UseSerilogLogProvider();
-            app.UseHangfireServer();
+            //app.UseHangfireServer();
             app.UseHangfireDashboard("/tasks");
         }
     }
