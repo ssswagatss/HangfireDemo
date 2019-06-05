@@ -5,6 +5,7 @@ namespace Hangfire.Tasks
 {
     public static class HgTask
     {
+        [Queue("critical")]
         public static void PerformSomeLongRunningTask(int bar)
         {
             Console.WriteLine($"Incoming argument(s) {bar}");
@@ -12,7 +13,7 @@ namespace Hangfire.Tasks
             Thread.Sleep(10000);
             Console.WriteLine("Completed Performing Long Running Tasks..");
         }
-
+        [Queue("emailqueue")]
         public static void PerformSomeRecurringTask()
         {
             Console.WriteLine("Started Performing Recurring Tasks..");

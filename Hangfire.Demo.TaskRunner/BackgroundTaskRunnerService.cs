@@ -12,14 +12,14 @@ namespace Hangfire.Demo.TaskRunner
 
         public void Start()
         {
-            //var options = new BackgroundJobServerOptions
-            //{
-            //    ServerName = string.Format("{0}:printjobqueue", Environment.MachineName),
-            //    WorkerCount = 10,
-            //    Queues = new[] { "printjobqueue" }
+            var options = new BackgroundJobServerOptions
+            {
+                ServerName = string.Format("{0}", Environment.MachineName),
+                WorkerCount = 30,
+                Queues = new[] { "critical","emailqueue","otherjobqueue" }
 
-            //};
-            _server = new BackgroundJobServer();
+            };
+            _server = new BackgroundJobServer(options);
         }
         public void Stop()
         {
