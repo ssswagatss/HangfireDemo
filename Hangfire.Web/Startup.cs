@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Hangfire.Web.Filters;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(Hangfire.Web.Startup))]
