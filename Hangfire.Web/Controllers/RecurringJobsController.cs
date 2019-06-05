@@ -22,29 +22,29 @@ namespace Hangfire.Web.Controllers
             return View(recurringJobDtos);
         }
 
-        //[HttpPost]
-        //public ActionResult Schedule(int minutes)
-        //{
-        //    RecurringJob.AddOrUpdate(jobId, () => HgTask.PerformSomeRecurringTask(), Cron.MinuteInterval(minutes));
-        //    return RedirectToAction("Index");
-        //}
-        //[HttpPost]
-        //public ActionResult Update(int minutes)
-        //{
-        //    RecurringJob.AddOrUpdate(jobId, () => HgTask.PerformSomeRecurringTask(), Cron.MinuteInterval(minutes));
-        //    return RedirectToAction("Index");
-        //}
-        //[HttpPost]
-        //public ActionResult TriggerNow()
-        //{
-        //    RecurringJob.Trigger(jobId);
-        //    return RedirectToAction("Index");
-        //}
-        //[HttpPost]
-        //public ActionResult Remove()
-        //{
-        //    RecurringJob.RemoveIfExists(jobId);
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        public ActionResult Schedule(int minutes)
+        {
+            RecurringJob.AddOrUpdate(jobId, () => HgTask.PerformSomeRecurringTask(), Cron.MinuteInterval(minutes));
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Update(int minutes)
+        {
+            RecurringJob.AddOrUpdate(jobId, () => HgTask.PerformSomeRecurringTask(), Cron.MinuteInterval(minutes));
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult TriggerNow()
+        {
+            RecurringJob.Trigger(jobId);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Remove()
+        {
+            RecurringJob.RemoveIfExists(jobId);
+            return RedirectToAction("Index");
+        }
     }
 }
