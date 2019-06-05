@@ -13,7 +13,7 @@ namespace Hangfire.Web
                                .UseSqlServerStorage("DemoHangfireDB")
                                .UseColouredConsoleLogProvider();
             app.UseHangfireServer();
-            app.UseHangfireDashboard();
+            app.UseHangfireDashboard("/tasks");
         }
     }
 }
