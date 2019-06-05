@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using Serilog;
 
 [assembly: OwinStartup(typeof(Hangfire.Web.Startup))]
 namespace Hangfire.Web
@@ -10,10 +11,13 @@ namespace Hangfire.Web
         {
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
 
-            //GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 2 });
+            //Log.Logger = new LoggerConfiguration()
+            //                        .WriteTo.File(@"C:\Logs\HfDemo\logfile.log", rollingInterval: RollingInterval.Day)
+            //                        .CreateLogger();
+            GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 2 });
             GlobalConfiguration.Configuration
-                               .UseSqlServerStorage("DemoHangfireDB")
-                               .UseColouredConsoleLogProvider();
+                               .UseSqlServerStorage("DemoHangfireDB");
+                               //.UseSerilogLogProvider();
             app.UseHangfireServer();
             app.UseHangfireDashboard("/tasks");
         }

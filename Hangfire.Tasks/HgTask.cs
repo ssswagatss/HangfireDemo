@@ -16,7 +16,7 @@ namespace Hangfire.Tasks
         public static void PerformSomeRecurringTask()
         {
             Console.WriteLine("Started Performing Recurring Tasks..");
-            //throw new Exception("Something went wrong !!");
+            throw new Exception("Something went wrong !!");
             Thread.Sleep(10000);
             Console.WriteLine("Completed Performing Recurring Tasks..");
         }
